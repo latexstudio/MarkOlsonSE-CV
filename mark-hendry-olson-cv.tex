@@ -1,0 +1,294 @@
+%!TEX TS-program = xelatex
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+% Deedy - One Page Two Column Resume
+% LaTeX Template
+% Version 1.2 (16/9/2014)
+%
+% Original author:
+% Debarghya Das (http://debarghyadas.com)
+%
+% Original repository:
+% https://github.com/deedydas/Deedy-Resume
+%
+% IMPORTANT: THIS TEMPLATE NEEDS TO BE COMPILED WITH XeLaTeX
+%
+% This template uses several fonts not included with Windows/Linux by
+% default. If you get compilation errors saying a font is missing, find the line
+% on which the font is used and either change it to a font included with your
+% operating system or comment the line out to use the default font.
+% 
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+% 
+% TODO:
+% 1. Integrate biber/bibtex for article citation under publications.
+% 2. Figure out a smoother way for the document to flow onto the next page.
+% 3. Add styling information for a "Projects/Hacks" section.
+% 4. Add location/address information
+% 5. Merge OpenFont and MacFonts as a single sty with options.
+% 
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+% CHANGELOG:
+% v1.1:
+% 1. Fixed several compilation bugs with \renewcommand
+% 2. Got Open-source fonts (Windows/Linux support)
+% 3. Added Last Updated
+% 4. Move Title styling into .sty
+% 5. Commented .sty file.
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+% Known Issues:
+% 1. Overflows onto second page if any column's contents are more than the
+% vertical limit
+% 2. Hacky space on the first bullet point on the second column.
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+\documentclass[a4paper]{deedy-resume}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+ 
+\rfoot{Page \thepage \hspace{1pt}}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%     MarkOlsonSE Customizations
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\definecolor{cvblue}{RGB}{42,84,126} % HEX #fedeed
+		\newcommand{\cvblue}[1]{{\color{cvblue}{#1}}}
+\newcommand{\ccvblue}{cvblue}
+\newcommand{\crcvblue}{\color{cvblue}}
+\newcommand{\doneit}{\cvblue{$\odot$}}
+\newcommand{\itemit}{\cvblue{$\odot$ \,}}
+\usepackage{xspace}
+\newcommand{\TikZ}{Ti\textit{k}Z\xspace}
+
+\usepackage{chronology}
+\renewcommand{\event}[3][e]{%
+  \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+  \ifx #1e%
+    \draw[fill=black,draw=none,opacity=0.5]%
+      (\xstop, 0) circle (.2\unit)%
+      node[opacity=1,rotate=45,right=.2\unit] {#3};%
+  \else%
+    \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+    \draw[fill=black,draw=none,opacity=0.5,rounded corners=.1\unit]%
+      (\xstart,-.1\unit) rectangle%
+      node[opacity=1,rotate=45,right=.2\unit] {#3} (\xstop,.1\unit);%
+  \fi}%
+\newcommand{\cevent}[3][e]{%
+  \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+  \ifx #1e%
+    \draw[fill=\ccvblue,draw=none,opacity=0.5]%
+      (\xstop, 0) circle (.2\unit)%
+      node[opacity=1,rotate=45,right=.2\unit] {#3};%
+  \else%
+    \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+    \draw[fill=\ccvblue,draw=none,opacity=0.5,rounded corners=.1\unit]%
+      (\xstart,-.1\unit) rectangle%
+      node[opacity=1,rotate=45,right=.2\unit] {#3} (\xstop,.1\unit);%
+  \fi}%
+
+\begin{document}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%     LAST UPDATED DATE
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\lastupdated
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%     TITLE NAME
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\namesection{Mark Hendry}{\crcvblue{Olson}}{ \urlstyle{same}\href{http://markolson.se}{markolson.se} 
+}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%     COLUMN ONE
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\begin{minipage}[t]{0.33\textwidth} 
+  
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%     ABOUT
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\section{About}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%     EDUCATION
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\section{Education} 
+\subsection{Lindenwood University}
+\descript{MA in Education}
+\location{May 2005 | St. Charles, MO, USA}
+\location{GPA: 4.0 / 4.0 }
+\sectionsep
+
+\subsection{Lindenwood University}
+\descript{BA in Mathematics}
+\location{May 2004 | St. Charles, MO, USA}
+\location{GPA: 3.75/4.0} 
+\itemit CBASE (passed) \\
+\itemit PRAXIS II (passed) \\
+\itemit swimming scholarship\\
+\itemit resident director Guffey Hall\\
+\sectionsep
+
+\subsection{Attended IB Workshops}
+\descript{Mathematics SL}
+\location{Oct 2016 -- Category 2}
+\location{Oct 2011 -- Category 1}
+\descript{Introducing the MYP}
+\location{Oct 2014 -- Category 1}
+\descript{Category 3: Using the TI-Nspire}
+\location{Oct 2013 -- Category 3 }
+\sectionsep
+
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%     LINKS
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\section{Links} 
+Github:// \href{https://github.com/markolsonse}{\bf MarkOlsonSE} \\
+LinkedIn://  \href{https://www.linkedin.com/in/MarkOlsonSE}{\bf MarkOlsonSE} \\
+YouTube://  \href{https://www.youtube.com/c/MarkHendryOlsonV42}{\bf MarkHendryOlsonV42} 
+
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%     SKILLS
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\section{Skills}
+\subsection{Technology}
+\location{Typesetting \& Languages:}
+\itemit \LaTeX\ \& \TikZ \\
+\itemit HTML, Markdown \& CSS \\ 
+\itemit Python, NumPy, SciPy \& SymPy \\
+\itemit Shell \\ 
+
+\location{General Software:}
+\itemit MacOS, Linux \& Windows \\
+\itemit SageMath \& Matplotlib \\
+\itemit TextMate (Editor of Choice)\\
+
+\location{Calculators:}
+\itemit TI84 \& TI89
+\sectionsep
+
+\subsection{Languages}
+\itemit English: native speaker\\
+\itemit Swedish: $\approx$ B1\\
+\itemit French: limited
+\sectionsep
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%     COLUMN TWO
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\end{minipage} 
+\hfill
+\begin{minipage}[t]{0.66\textwidth} 
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%     EXPERIENCE
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\section{Experience}
+\begin{center}\begin{chronology}[2]{2005}{2018}{0.9\textwidth}
+\event[\decimaldate{21}{7}{2005}]{\decimaldate{21}{7}{2006}}{Northern College}
+\event[\decimaldate{21}{7}{2006}]{\decimaldate{20}{7}{2008}}{Engelska Skolan Täby}
+\event[\decimaldate{21}{7}{2008}]{\decimaldate{12}{8}{2014}}{Engelska Gymnasiet}
+\event[\decimaldate{13}{8}{2014}]{\decimaldate{16}{8}{2016}}{Stockholms Stad}
+\cevent[\decimaldate{17}{8}{2016}]{\decimaldate{12}{2}{2018}}{\cvblue{Sigtunaskolan Läroverket}}
+\end{chronology}
+\end{center}
+\runsubsection{Sigtunaskolan Humanistiska Läroverket}\\
+\descript{Teacher of Mathematics }
+\location{Aug 2016 - Present | Sigtuna, Sweden}
+\vspace{\topsep} % Hacky fix for awkward extra vertical space
+\begin{tightemize}\item Teaching Mathematics in the Swedish Business Management and the International Baccalaureate, \emph{IB}, Diploma Programmes.
+\end{tightemize}
+\sectionsep
+
+\runsubsection{International School of the Stockholm Region}\\
+\descript{Teacher of Mathematics}
+\location{Aug 2014 – Aug 2016 | Stockholm, Sweden}
+\vspace{\topsep} % Hacky fix for awkward extra vertical space
+\begin{tightemize}\item Teaching Mathematics in the International Baccalaureate, \emph{IB}, Middle School \& Diploma Programmes.
+\end{tightemize}
+\sectionsep
+
+\runsubsection{Internationella Engelska Skolan}\\
+\descript{Teacher of Mathematics}
+\location{Aug 2006 – Aug 2014 | Stockholm, Sweden}
+\vspace{\topsep} % Hacky fix for awkward extra vertical space
+\begin{tightemize}\item Head of Mathematics Department: Aug 2010 -- June 2014.
+\item IT Coordinator: Aug 2008 -- June 2009
+\item High School Teacher at Internationella Engelska Skolan Gymansiet: Aug 2008 -- Aug 2014 
+\item Middle School Teacher at Internationella Engelska Skolan Täby:  Aug 2006 -- Aug 2008 
+\end{tightemize}
+\sectionsep
+
+\runsubsection{Northern College}\\
+\descript{College instructor of Mathematics}
+\location{Aug 2005 –- Aug 2006 | Kirkland Lake, ON, Canada}
+\begin{tightemize}
+\item Taught Mathematics I, II, III, Calculus I and Mechanics/Statics in both the Welding Engineering Technician \& Technologist programs
+\item Taught Mathematics and Precision Measurement II in the Mechanical Technician -- Welding Fitter program \end{tightemize}
+\sectionsep
+
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%    COURSES TAUGHT
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\section{Courses Taught} 
+\begin{center}
+\begin{tabular}{l|cccccccccccc}
+\cline{2-13}
+& \textbf{07}& \textbf{09} & \textbf{09} & \textbf{10}& \textbf{11} & \textbf{12} & \textbf{13} & \textbf{14} & \textbf{15} & \textbf{16} & \textbf{17} & \textbf{18}\\
+\hline
+
+Year 7 / MYP 3 & \doneit & \doneit & &  &  &  &  &  & \doneit & \doneit & & \\
+
+Year 8 / MYP 4 & & \doneit & &  &  &  &  &  & \doneit & \doneit& & \\
+
+MYP 5 & & & &  &  &  & \doneit & \doneit & & & \doneit & \\
+
+Math A/1bc & & & \doneit & \doneit & \doneit & \doneit & \doneit & \doneit & & \doneit & & \doneit\\
+
+Math B/2bc & & & \doneit & \doneit & \doneit & \doneit & \doneit & \doneit & \doneit & \doneit & \doneit & \doneit\\
+
+Math C/3bc & & & \doneit & \doneit & \doneit & \doneit & \doneit & & & & \doneit & \doneit\\
+
+Math D/4 & & & \doneit & \doneit & \doneit & \doneit & \doneit & & & & & \\
+
+Math E/5 & & &  &  & \doneit & \doneit & \doneit & & & & & \\
+
+Math IB SL & & &  &  &  & &  & \doneit & \doneit & \doneit & \doneit & \doneit\\
+
+Math IB HL & & &  &  &  & &  &  & & \doneit & & \doneit\\
+
+Physics A & & &  &  & \doneit &  &  & & & & & \\
+
+\end{tabular}
+\end{center}
+\sectionsep
+
+\end{minipage} 
+\end{document}  
